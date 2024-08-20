@@ -6,13 +6,13 @@ require("dotenv").config();
 const UserSchema = new mongoose.Schema({
   name: {
     type: String,
-    require: [true, "please provide a name"],
+    required: [true, "please provide a name"],
     minlength: 3,
     maxlength: 20,
   },
   email: {
     type: String,
-    require: [true, "please provide a email"],
+    required: [true, "please provide a email"],
     match: [
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
       "Please provide valid email",
@@ -21,7 +21,7 @@ const UserSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    require: [true, "please provide a name"],
+    required: [true, "please provide a name"],
     minlength: 6,
   },
 });

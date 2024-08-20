@@ -5,6 +5,7 @@ const { BadRequestError, UnauthenticatedError } = require("../errors");
 require("dotenv");
 
 const register = async (req, res) => {
+  console.log(req.body);
   const user = await User.create({ ...req.body });
   const token = user.CreateJWT();
   res.status(StatusCodes.CREATED).json({ user: { name: user.name }, token });
@@ -19,7 +20,7 @@ const login = async (req, res) => {
   if (!user) {
     throw new UnauthenticatedError("Invalid credentials");
   }
-  const isPasswordCorrect = await user.comparePassword(password)
+  const isPasswordCorrect = await user.comparePassword(password);
 
   if (!isPasswordCorrect) {
     throw new UnauthenticatedError("Invalid credentials");
